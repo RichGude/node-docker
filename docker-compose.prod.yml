@@ -1,0 +1,14 @@
+version: "3"
+services:
+  # Only define or change the features that differ between the prod and base (namely env)
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+    - "80:80"
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
